@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
   await Category.findAll({
-    include: [Product]
+    include: [{model: Product}]
   }).then((data) => {
     res.json(data);
   }).catch((err) => {
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     where: {
       category_id: req.params.id
     },
-    include: [Product]
+    include: [{model: Product }]
   }).then((data) => {
     res.json(data);
   }).catch((err) => {
